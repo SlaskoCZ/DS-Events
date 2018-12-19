@@ -11,8 +11,30 @@
   </head>
 <body>
 
+<div class="top-bar">
+  <div class="title-bar" data-responsive-toggle="main-top-left-menu" data-hide-for="medium">
+    <button class="menu-icon" type="button" data-toggle></button>
+  </div>
+  <ul class="dropdown horizontal menu show-for-medium">
+    <li><a href="#">Logo</a></li>
+    <li><a href="#">Events</a></li>
+  </ul>
+
+  <div class="title-bar" data-responsive-toggle="main-top-right-menu" data-hide-for="medium">
+    <button class="menu-icon" type="button" data-toggle></button>
+  </div>
+
+  <div class="top-bar-right" >
+    <ul class="dropdown vertical medium-horizontal menu" id="main-top-right-menu">
+      <li><a href="#">Notification</a></li>
+      <li><a href="#">Calendar</a></li>
+    </ul>
+  </div>
+</div>
+
 {# Pages you create in the src/pages/ folder are inserted here when the flattened page is created. #}
-{% block page %}{% endblock %}
+{% block page %}
+{% endblock %}
 
 <script src="{{root}}assets/js/app.js"></script>
 </body>
