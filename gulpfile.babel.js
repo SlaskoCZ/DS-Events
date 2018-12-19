@@ -185,4 +185,5 @@ function watch() {
   gulp.watch('src/assets/img/**/*').on('all', gulp.series(images, browser.reload));
   gulp.watch('src/styleguide/**').on('all', gulp.series(styleGuide, browser.reload));
   gulp.watch('src/pages/**/*.twig').on('all', gulp.series(pages, browser.reload));
+  gulp.watch('src/layouts/**/*.twig').on('all', gulp.series(pages, browser.reload));
 }
