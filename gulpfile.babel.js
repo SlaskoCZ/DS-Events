@@ -53,15 +53,20 @@ function copy() {
 
 // Copy page templates into finished HTML files
 function pages() {
-  return gulp.src('src/pages/**/*.{html,hbs,handlebars}')
-    .pipe(panini({
-      root: 'src/pages/',
-      layouts: 'src/layouts/',
-      partials: 'src/partials/',
-      data: 'src/data/',
-      helpers: 'src/helpers/'
-    }))
-    .pipe(gulp.dest(PATHS.dist));
+  //return gulp.src('src/pages/**/*.{html,hbs,handlebars}')
+   // .pipe(panini({
+   //   root: 'src/pages/',
+    //  layouts: 'src/layouts/',
+    //  partials: 'src/partials/',
+    //  data: 'src/data/',
+    //  helpers: 'src/helpers/'
+    //}))
+    //.pipe(gulp.dest(PATHS.dist));
+	
+  return gulp.src('src/pages/*.twig') // run the Twig template parser on all .html files in the "src/templates" directory
+    .pipe($.twig())
+    .pipe(gulp.dest(PATHS.dist)) // output the rendered HTML files to the "dist" directory
+    .pipe(browser.reload({ stream: true }));
 }
 
 // Load updated HTML templates and partials into Panini
@@ -116,6 +121,14 @@ let webpackConfig = {
             compact: false
           }
         }
+      },
+	  {
+        test: /.vue$/,
+        use: [
+          {
+            loader: 'vue-loader'
+          }
+        ]
       }
     ]
   },
@@ -162,12 +175,14 @@ function reload(done) {
 // Watch for changes to static assets, pages, Sass, and JavaScript
 function watch() {
   gulp.watch(PATHS.assets, copy);
-  gulp.watch('src/pages/**/*.html').on('all', gulp.series(pages, browser.reload));
-  gulp.watch('src/{layouts,partials}/**/*.html').on('all', gulp.series(resetPages, pages, browser.reload));
+  //gulp.watch('src/pages/**/*.html').on('all', gulp.series(pages, browser.reload));
+  //gulp.watch('src/{layouts,partials}/**/*.html').on('all', gulp.series(resetPages, pages, browser.reload));
   gulp.watch('src/data/**/*.{js,json,yml}').on('all', gulp.series(resetPages, pages, browser.reload));
   gulp.watch('src/helpers/**/*.js').on('all', gulp.series(resetPages, pages, browser.reload));
   gulp.watch('src/assets/scss/**/*.scss').on('all', sass);
   gulp.watch('src/assets/js/**/*.js').on('all', gulp.series(javascript, browser.reload));
+  gulp.watch('src/assets/js/**/*.vue').on('all', gulp.series(javascript, browser.reload));
   gulp.watch('src/assets/img/**/*').on('all', gulp.series(images, browser.reload));
   gulp.watch('src/styleguide/**').on('all', gulp.series(styleGuide, browser.reload));
+  gulp.watch('src/pages/*.twig').on('all', gulp.series(pages, browser.reload));
 }
