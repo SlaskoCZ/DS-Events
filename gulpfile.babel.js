@@ -13,7 +13,8 @@ import webpackStream from 'webpack-stream';
 import webpack2      from 'webpack';
 import named         from 'vinyl-named';
 import uncss         from 'uncss';
-import autoprefixer  from 'autoprefixer';
+import autoprefixer from 'autoprefixer';
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 // Load all Gulp plugins into one variable
 const $ = plugins();
@@ -110,6 +111,12 @@ function sass() {
 
 let webpackConfig = {
   mode: (PRODUCTION ? 'production' : 'development'),
+  resolve: {
+    extensions: ['.js', '.vue', '.json'],
+    alias: {
+      vue: 'vue/dist/vue.js'
+    }
+  },
   module: {
     rules: [
       {
@@ -132,6 +139,9 @@ let webpackConfig = {
       }
     ]
   },
+  plugins: [
+    new VueLoaderPlugin()
+  ],
   devtool: !PRODUCTION && 'source-map'
 }
 
