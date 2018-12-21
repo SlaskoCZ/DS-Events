@@ -1,6 +1,6 @@
 <template>
     <div class="event-message" v-bind:class="{new: message.isNew}">
-        <img :src="message.image" class="image"/> 
+        <div :src="message.image" class="icon" v-bind:class="[message.type, {new: message.isNew}]"></div>
         <div class="info">
             <div class="subject">{{ message.subject + " - " + message.name }}</div>
             <p class="message">{{ message.message }}</p>
@@ -10,7 +10,12 @@
 
 <script>
 export default {
-    props: ['message']
+    props: ['message'],
+    methods: {
+        markRead: function(event){
+            this.message.isNew = false;
+        }
+    }
 }
 </script>
 

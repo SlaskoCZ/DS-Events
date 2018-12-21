@@ -1,0 +1,7 @@
+{% extends "../layouts/default.twig" %}
+
+{% block page %}
+<div class="content" id="EventContent">
+    <event-component v-bind:is-simple="true" v-bind:items-shown="10"></event-component>
+</div>
+{% endblock %}

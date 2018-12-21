@@ -14,14 +14,14 @@ require('foundation-sites');
 // the line below
 //import './lib/foundation-explicit-pieces';
 
-import EventContainer from './components/event-container.vue';
+import EventComponent from './components/event-component.vue';
 
 $(document).foundation();
 
 var vue = new Vue({
     el: '#EventContent',
     components: {
-        EventContainer
+        EventComponent
     }
 })
 
