@@ -1,20 +1,26 @@
 <template>
   <div class="event-container">
     <h4 :class="textClass">
-{{ text }}
-</h4>
+      {{ text }}
+    </h4>
     <template v-for="message in view">
-      <EventMessage :key="message.index"
-:message="message" />
+      <EventMessage
+        :key="message.index"
+        :message="message"
+      />
     </template>
-    <button v-if="showPages < maxPages"
-@click="showPages = showPages + 1">
-Načíst další
-</button>
-    <button v-if="showPages > 1"
-@click="showPages = showPages - 1">
-Zpět
-</button>
+    <button
+      v-if="showPages < maxPages"
+      @click="showPages = showPages + 1"
+    >
+      Načíst další
+    </button>
+    <button
+      v-if="showPages > 1"
+      @click="showPages = showPages - 1"
+    >
+      Zpět
+    </button>
   </div>
 </template>
 
@@ -25,7 +31,11 @@ export default {
     components:{
         EventMessage
     },
-    props: ['text', 'textClass', 'messages', 'pageLimit'],
+    props: {
+        text: {type: String, default: '' }, 
+        textClass: {type: String, default: '' }, 
+        messages: {type: String, default: '' }, 
+        pageLimit: {type: Number, default: undefined }},
     data(){
         return{
             showPages: 1
