@@ -22,7 +22,7 @@
 <script>
 export default {
     props: {
-        message: {type: String, default: '' } 
+        message: {type: Object, default: undefined } 
     },
     methods: {
         markRead: function(){

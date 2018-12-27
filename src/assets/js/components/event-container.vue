@@ -34,7 +34,7 @@ export default {
     props: {
         text: {type: String, default: '' }, 
         textClass: {type: String, default: '' }, 
-        messages: {type: String, default: '' }, 
+        messages: {type: Array, default: undefined }, 
         pageLimit: {type: Number, default: undefined }},
     data(){
         return{
