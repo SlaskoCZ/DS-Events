@@ -164,7 +164,13 @@ function javascript() {
 function images() {
   return gulp.src('src/assets/img/**/*')
     .pipe($.if(PRODUCTION, $.imagemin([
-      $.imagemin.jpegtran({ progressive: true }),
+        $.imagemin.jpegtran({ progressive: true }),
+        $.imagemin.svgo({
+            plugins: [
+                { removeViewBox: true },
+                { cleanupIDs: false }
+            ]
+        })
     ])))
     .pipe(gulp.dest(PATHS.dist + '/assets/img'));
 }
