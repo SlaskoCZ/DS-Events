@@ -1,16 +1,16 @@
 [
     {
-        "type": "message",
-        "message": "this is message! This is message",
-        "subject": "subject",
+        "type": "house",
+        "message": "this is house! This is house",
+        "subject": "subject1",
         "name": "Test User",
         "index": 0,
         "isNew": true
     },
     {
-        "type": "info",
+        "type": "arrow-swap",
         "message": "this is info! This is message",
-        "subject": "subject",
+        "subject": "subject1",
         "name": "Test User",
         "index": 1,
         "isNew": false
@@ -18,7 +18,7 @@
     {
         "type": "message",
         "message": "this is message! This is message",
-        "subject": "subject",
+        "subject": "subject2",
         "name": "Test User",
         "index": 2,
         "isNew": true
@@ -26,7 +26,7 @@
     {
         "type": "info",
         "message": "this is info! This is message",
-        "subject": "subject",
+        "subject": "subject2",
         "name": "Test User",
         "index": 3,
         "isNew": false
@@ -34,7 +34,7 @@
     {
         "type": "info",
         "message": "this is info! This is message",
-        "subject": "subject",
+        "subject": "subject2",
         "name": "Test User",
         "index": 4,
         "isNew": true
@@ -42,7 +42,7 @@
     {
         "type": "message",
         "message": "this is message! This is message",
-        "subject": "subject",
+        "subject": "subject4",
         "name": "Test User",
         "index": 10,
         "isNew": true
@@ -50,7 +50,7 @@
     {
         "type": "info",
         "message": "this is info! This is message",
-        "subject": "subject",
+        "subject": "subject5",
         "name": "Test User",
         "index": 11,
         "isNew": false
@@ -58,7 +58,7 @@
     {
         "type": "message",
         "message": "this is message! This is message",
-        "subject": "subject",
+        "subject": "subject1",
         "name": "Test User",
         "index": 12,
         "isNew": true
@@ -66,7 +66,7 @@
     {
         "type": "info",
         "message": "this is info! This is message",
-        "subject": "subject",
+        "subject": "subject2",
         "name": "Test User",
         "index": 13,
         "isNew": false
@@ -74,7 +74,7 @@
     {
         "type": "info",
         "message": "this is info! This is message",
-        "subject": "subject",
+        "subject": "subject1",
         "name": "Test User",
         "index": 14,
         "isNew": true
@@ -82,7 +82,7 @@
     {
         "type": "message",
         "message": "this is message! This is message",
-        "subject": "subject",
+        "subject": "subject6",
         "name": "Test User",
         "index": 20,
         "isNew": true
@@ -90,7 +90,7 @@
     {
         "type": "info",
         "message": "this is info! This is message",
-        "subject": "subject",
+        "subject": "subject8",
         "name": "Test User",
         "index": 21,
         "isNew": false
@@ -98,7 +98,7 @@
     {
         "type": "message",
         "message": "this is message! This is message",
-        "subject": "subject",
+        "subject": "subject9",
         "name": "Test User",
         "index": 22,
         "isNew": true
@@ -106,7 +106,7 @@
     {
         "type": "info",
         "message": "this is info! This is message",
-        "subject": "subject",
+        "subject": "subject10",
         "name": "Test User",
         "index": 23,
         "isNew": false
@@ -114,7 +114,7 @@
     {
         "type": "info",
         "message": "this is info! This is message",
-        "subject": "subject",
+        "subject": "subject1",
         "name": "Test User",
         "index": 24,
         "isNew": true
@@ -122,7 +122,7 @@
     {
         "type": "message",
         "message": "this is message! This is message",
-        "subject": "subject",
+        "subject": "subject1",
         "name": "Test User",
         "index": 30,
         "isNew": true
@@ -130,7 +130,7 @@
     {
         "type": "info",
         "message": "this is info! This is message",
-        "subject": "subject",
+        "subject": "subject1",
         "name": "Test User",
         "index": 31,
         "isNew": false
@@ -138,7 +138,7 @@
     {
         "type": "message",
         "message": "this is message! This is message",
-        "subject": "subject",
+        "subject": "subject2",
         "name": "Test User",
         "index": 32,
         "isNew": true

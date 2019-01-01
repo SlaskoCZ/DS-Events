@@ -1,30 +1,24 @@
 <template>
   <div class="event-component">
     <EventContainer
-      v-if="isSimple === true && isLoaded === true"
+      v-if="isSimple === true"
       :messages="messages"
       :page-limit="itemsShown"
     />
     <EventContainer
-      v-if="isSimple === false && isLoaded === true"
+      v-if="isSimple === false"
       :text="newText"
       :text-class="newTextClass"
       :messages="unread"
     />
     <EventContainer
-      v-if="isSimple === false && isLoaded === true"
+      v-if="isSimple === false"
       :text="readText"
       :text-class="readTextClass"
       :messages="read"
     />
     <p
-      v-if="isFailed === true"
-      class="text-center"
-    >
-      Something went wrong!
-    </p>
-    <p
-      v-if="isFailed === false && isLoaded === false"
+      v-if="isLoaded == false"
       class="text-center"
     >
       Loading, please wait
@@ -34,7 +28,6 @@
 
 <script>
 import EventContainer from './event-container.vue';
-import messagesFile from '../../../data/messages.json';
 
 export default {
     components:{
@@ -46,56 +39,65 @@ export default {
         newTextClass: {type: String, default: 'new' },
         readText: {type: String, default: 'Přečtené' },
         readTextClass: {type: String, default: '' },
-        itemsShown: {type: Number, default: Number.MAX_VALUE}
-    },
-    data: function() {
-        return{
-            messages:  undefined
-        };
+        itemsShown: {type: Number, default: Number.MAX_VALUE},
+        getMessages: {type: Function, default: undefined }
     },
     computed:{
         read: function(){
-            return this.messages.filter(function(x) { return x.isNew === false; }).slice(0, this.itemsShown);
+            if (!this.isLoaded)
+                return this.messages;
+            var view = [];
+            for (let index = 0; index < this.messages.length; index++) {
+                var message = this.messages[index];
+                if(message.isNew === true)
+                    continue;
+
+                if (view.filter(x=> x.subject == message.subject) > 0)
+                    continue;
+
+                message.subMessages = this.getGroup(message.subject);
+                view.push(message);
+                if(view.length >= this.itemsShown)
+                    break;
+            }
+
+            return view;
         },
         unread: function(){
-            return this.messages.filter(function(x) { return x.isNew === true; }).slice(0, this.itemsShown);
-        },
-        isLoaded: function(){
-            if(this.isFailed)
-                return false;
+            if (!this.isLoaded)
+                return this.messages;
+            var view = [];
+            for (let index = 0; index < this.messages.length; index++) {
+                var message = this.messages[index];
+                if(message.isNew === false)
+                    continue;
 
-            if(Array.isArray(this.messages))
-                return true;
+                if (view.filter(x=> x.subject == message.subject).length > 0)
+                    continue;
 
-            return false;
+                message.subMessages = this.getGroup(message.subject);
+                view.push(message);
+                if(view.length >= this.itemsShown)
+                    break;
+            }
+
+            return view;
         },
-        isFailed: function(){
-            return false;
+        isLoaded(){         
+            return this.messages != undefined && this.messages.length > 0;
         }
-    },
-    mounted: function(){
-        this.getData();
     },
     methods:{
-        getData(){
-            getDataAsync().then(data => this.messages = data );
+        getGroup(subject){
+            return this.messages.filter(function(x) { return x.subject === subject; });
         }
     },
+    asyncComputed:{
+        messages() {
+            return this.getMessages();
+        }
+    }
 };
-
-function getDataAsync(filter) {
-    if(!filter)
-        filter = '';
-
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            const results = messagesFile.filter((element) => {
-                return element.subject.toLowerCase().includes(filter.toLowerCase());
-            });
-            resolve(results);
-        }, 1000);
-    });
-}
 </script>
 
 <style>

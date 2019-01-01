@@ -2,6 +2,6 @@
 
 {% block page %}
 <div class="content" id="eventContent">
-    <event-component :is-simple="true" :items-shown="10"></event-component>
+    <event-component :is-simple="true" :items-shown="10" :get-messages="getData"></event-component>
 </div>
 {% endblock %}

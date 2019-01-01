@@ -1,7 +1,9 @@
 import $ from 'jquery';
 import 'what-input';
+import AsyncComputed from 'vue-async-computed';
 import Vue from 'vue';
 import EventComponent from './components/event-component.vue';
+import messagesFile from '../../data/messages.json';
 
 // Foundation JS relies on a global varaible. In ES6, all imports are hoisted
 // to the top of the file so if we used`import` to import Foundation,
@@ -16,10 +18,31 @@ require('foundation-sites');
 // import './lib/foundation-explicit-pieces';
 
 $(document).foundation();
+Vue.use(AsyncComputed);
 
 new Vue({
     el: '#eventContent',
     components: {
         EventComponent,
     },
+    methods: {
+        getData(filter) {
+            return getDataAsync(filter);
+        }
+    }
 });
+
+
+function getDataAsync(filter) {
+    if (!filter)
+        filter = '';
+
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            const results = messagesFile.filter((element) => {
+                return element.subject.toLowerCase().includes(filter.toLowerCase());
+            });
+            resolve(results);
+        }, 1000);
+    });
+}
