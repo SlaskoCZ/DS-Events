@@ -5,6 +5,12 @@
     </h4>
     <template v-for="message in view">
       <EventMessage
+        v-if="message.subMessages == undefined || message.subMessages.length <= 1"
+        :key="message.index"
+        :message="message"
+      />
+      <EventGroupMessage
+        v-if="message.subMessages != undefined && message.subMessages.length > 1"
         :key="message.index"
         :message="message"
       />
@@ -28,10 +34,12 @@
 
 <script>
 import EventMessage from './event-message.vue';
+import EventGroupMessage from './event-group-message.vue';
 
 export default {
     components:{
-        EventMessage
+        EventMessage,
+        EventGroupMessage
     },
     props: {
         text: {type: String, default: '' }, 
@@ -47,10 +55,12 @@ export default {
         pages: function(){
             var pages = [];
             var index = 0;
+            if (this.messages == undefined)
+                return undefined;
+
             var messages = this.messages;
 
             if(this.pageLimit == undefined){
-                
                 pages.push({index, messages});
                 return pages;
             }
@@ -64,9 +74,14 @@ export default {
             return pages;
         },
         maxPages: function(){
+            if (this.messages == undefined)
+                return undefined;
             return this.pages.length;
         },
         view: function(){
+            if (this.messages == undefined)
+                return undefined;
+
             var result = [];
             
             for (let index = 0; index < this.showPages; index++) {

@@ -7,9 +7,14 @@
       :src="message.image"
       class="icon"
       :class="[message.type, {new: message.isNew}]" 
-    />
+    >
+      <div :class="message.type" />
+    </div>
     <div class="info">
-      <div class="subject">
+      <div 
+        v-if="showSubject"
+        class="subject"
+      >
         {{ message.subject + " - " + message.name }}
       </div>
       <p class="message">
@@ -22,7 +27,8 @@
 <script>
 export default {
     props: {
-        message: {type: Object, default: undefined } 
+        message: {type: Object, default: undefined },
+        showSubject: {type: Boolean, default: true}
     },
     methods: {
         markRead: function(){

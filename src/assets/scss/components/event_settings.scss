@@ -1,0 +1,20 @@
+$event-icon-palette: (
+    message: #2274d5,
+    inactive: #919191,
+    default: #57a01f
+    ) !default;
+$event-palette: (
+    primary: #57a01f,
+    active: #404040,
+    inactive: #919191,
+    notification: #d10910,
+    background: #fff,
+    background-inactive: #f8f8f8
+) !default;
+
+$black-shadow: rgba(0, 0, 0, .5) !default;
+
+$event-icon-types: (
+    house: '../img/i_house-full.svg',
+    arrow-swap: '../img/i_arrow-swap.svg'
+);
