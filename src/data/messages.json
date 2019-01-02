@@ -8,7 +8,7 @@
         "isNew": true
     },
     {
-        "type": "arrow-swap",
+        "type": "info",
         "message": "this is info! This is message",
         "subject": "subject1",
         "name": "Test User",

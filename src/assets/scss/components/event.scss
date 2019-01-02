@@ -1,18 +1,16 @@
 
 @import 'event_settings';
 
+%new-colors {
+    background-color: map-get($map: $event-palette, $key: background);
+}
+
 .footer {
     text-align: center;
 }
 
 .content {
-    margin-left: auto;
-    margin-right: auto;
-    padding: inherit;
     white-space: nowrap;
-    @include breakpoint(medium) {
-        width: 80%;
-    }
 }
 
 .icon {
@@ -21,6 +19,7 @@
     border-radius: 16px;
     display: inline-block;
     height: 32px;
+    margin: rem-calc(16px);
     vertical-align: top;
     width: 32px;
 
@@ -28,6 +27,7 @@
         border-radius: 10px;
         height: 20px;
         width: 20px;
+        margin: rem-calc(9px);
     }
 
     &.new {
@@ -59,10 +59,6 @@
         background-color: transparent;
         color: map-get($map: $event-icon-palette, $key: inactive);
 
-        &.new {
-            border-color: map-get($map: $event-icon-palette, $key: inactive);
-        }
-
         .icon-group-number {
             font-size: rem-calc(16px);
             font-weight: bold;
@@ -74,6 +70,27 @@
     }
 }
 
+.new {
+    @extend %new-colors;
+}
+
+.upsidedown {
+    display: inline-block;
+    transform: rotateX(180deg);
+}
+
+.event-component {
+    overflow-y: auto;
+
+    @include breakpoint(medium) {
+        margin: 0 rem-calc(74px) rem-calc(60px) rem-calc(80px);
+    }
+
+    @include breakpoint(large) {
+        margin: rem-calc(27px) rem-calc(32px) rem-calc(48px) rem-calc(90px);
+    }
+}
+
 .event-container {
     h4 {
         color: map-get($map: $event-palette, $key: inactive);
@@ -81,13 +98,13 @@
         padding-left: 1rem;
 
         &.new {
-            background-color: map-get($map: $event-palette, $key: background);
+            @extend %new-colors;
             color: map-get($map: $event-palette, $key: primary);
         }
     }
 
     .navigation-button {
-        background-color: map-get($map: $event-palette, $key: background);
+        @extend %new-colors;
         border: 2px solid map-get($map: $event-palette, $key: primary);
         color: map-get($map: $event-palette, $key: primary);
         margin: 0;
@@ -100,7 +117,6 @@
     .event-message {
         background-color: $body-background;
         color: map-get($map: $event-palette, $key: inactive);
-        padding: 1rem;
 
         &:hover {
             box-shadow: 0 0 10px 1px $black-shadow;
@@ -108,7 +124,7 @@
         }
 
         &.new {
-            background-color: map-get($map: $event-palette, $key: background);
+            @extend %new-colors;
             color: map-get($map: $event-palette, $key: active);
         }
 
@@ -118,24 +134,30 @@
             }
         }
 
-        .info {
+        .info-box {
             display: inline-block;
-            padding-left: .5rem;
+            padding: rem-calc(16px);
+            padding-left: 0;
+
+            &.small {
+                padding: rem-calc(9px);
+                padding-left: 0;
+            }
 
             .message {
                 border: 1px;
                 margin: inherit;
-                max-width: 400px;
+                max-width: rem-calc(400px);
                 overflow: hidden;
                 text-overflow: ellipsis;
                 width: auto;
 
                 @include breakpoint(medium) {
-                    max-width: 450px;
+                    max-width: rem-calc(450px);
                 }
 
                 @include breakpoint(large) {
-                    max-width: 750px;
+                    max-width: rem-calc(750px);
                 }
             }
 

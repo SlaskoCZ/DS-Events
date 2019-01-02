@@ -18,7 +18,7 @@
       :messages="read"
     />
     <p
-      v-if="isLoaded == false"
+      v-if="isLoaded === false"
       class="text-center"
     >
       Loading, please wait
@@ -46,16 +46,17 @@ export default {
         read: function(){
             if (!this.isLoaded)
                 return this.messages;
+
             var view = [];
             for (let index = 0; index < this.messages.length; index++) {
                 var message = this.messages[index];
-                if(message.isNew === true)
+                if(message.isNew == true)
+                    continue;
+                
+                if (view.filter(x=> x.subject == message.subject).length > 0)
                     continue;
 
-                if (view.filter(x=> x.subject == message.subject) > 0)
-                    continue;
-
-                message.subMessages = this.getGroup(message.subject);
+                message.subMessages = this.getGroup(message.subject, message.isNew);
                 view.push(message);
                 if(view.length >= this.itemsShown)
                     break;
@@ -66,16 +67,17 @@ export default {
         unread: function(){
             if (!this.isLoaded)
                 return this.messages;
+
             var view = [];
             for (let index = 0; index < this.messages.length; index++) {
                 var message = this.messages[index];
-                if(message.isNew === false)
+                if(message.isNew == false)
                     continue;
 
                 if (view.filter(x=> x.subject == message.subject).length > 0)
                     continue;
 
-                message.subMessages = this.getGroup(message.subject);
+                message.subMessages = this.getGroup(message.subject, message.isNew);
                 view.push(message);
                 if(view.length >= this.itemsShown)
                     break;
@@ -88,8 +90,8 @@ export default {
         }
     },
     methods:{
-        getGroup(subject){
-            return this.messages.filter(function(x) { return x.subject === subject; });
+        getGroup(subject, isNew){
+            return this.messages.filter(function(x) { return x.subject === subject && x.isNew == isNew; });
         }
     },
     asyncComputed:{

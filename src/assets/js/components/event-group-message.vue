@@ -7,16 +7,24 @@
       <div
         :src="message.image"
         class="icon group"
-        :class="[{new: message.isNew}]" 
       >
         <div class="icon-group-number">
           {{ message.subMessages.length }}
         </div>
       </div>
-      <div class="info">
+      <div class="info-box">
         <div class="subject">
           {{ message.subject + " - " + message.name }}
         </div>
+        <p class="message">
+          {{ groupMessage }} 
+          <span 
+            class="arrow" 
+            :class="{upsidedown: showChildren}"
+          >
+            ^
+          </span> 
+        </p>
       </div>
     </div>
     <div
@@ -24,11 +32,12 @@
       :key="'d' + message.index"
       class="childrens"
     >
-      <template v-for="subMessage in message.subMessages">
+      <template v-for="subMessage in subMessages">
         <EventMessage
           :key="subMessage.index"
           :message="subMessage"
           :show-subject="false"
+          :use-small-icon="true"
         />
       </template>
     </div>      
@@ -49,6 +58,14 @@ export default {
         return{
             showChildren: false
         };
+    },
+    computed:{
+        subMessages(){
+            return this.message.subMessages;
+        },
+        groupMessage(){
+            return this.message.isNew ? 'Máte nová oznámení' : 'Skupina oznámení';
+        }
     },
     methods: {
         toggleChildren() {
