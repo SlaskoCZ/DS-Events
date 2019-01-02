@@ -2,15 +2,19 @@
   <div
     class="event-message"
     :class="{new: message.isNew}"
+    @click="changeRead"
   >
     <div
       :src="message.image"
       class="icon"
-      :class="[message.type, {new: message.isNew}]" 
+      :class="[message.type, {new: message.isNew}, {small: useSmallIcon}]" 
     >
       <div :class="message.type" />
     </div>
-    <div class="info">
+    <div 
+      class="info-box"
+      :class="{small: useSmallIcon}" 
+    >
       <div 
         v-if="showSubject"
         class="subject"
@@ -28,11 +32,12 @@
 export default {
     props: {
         message: {type: Object, default: undefined },
-        showSubject: {type: Boolean, default: true}
+        showSubject: {type: Boolean, default: true},
+        useSmallIcon: {type: Boolean, default: false},
     },
     methods: {
-        markRead: function(){
-            this.message.isNew = false;
+        changeRead: function(){
+            this.message.isNew = !this.message.isNew;
         }
     }
 };

@@ -1,5 +1,8 @@
 <template>
-  <div class="event-container">
+  <div 
+    v-if="view != undefined" 
+    class="event-container"
+  >
     <h4 :class="textClass">
       {{ text }}
     </h4>
@@ -15,6 +18,13 @@
         :message="message"
       />
     </template>
+    <div 
+      v-if="view.length == 0"
+      class="text-center"
+      :class="textClass"
+    >
+      Hurá, nemáte žádné {{ text }}.
+    </div>
     <button
       v-if="showPages < maxPages"
       class="button navigation-button"
@@ -96,7 +106,6 @@ export default {
 };
 </script>
 
-// TODO Show only x items per page add load more
 // TODO Mark All as Read
 // TODO Make date to nice date conversion
 
