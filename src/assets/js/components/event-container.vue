@@ -25,9 +25,11 @@
     >
       Hurá, nemáte žádné {{ text }}.
     </div>
-    <div class="navigation-panel sticky-bottom">
+    <div 
+      v-if="showPages < maxPages"
+      class="navigation-panel"
+    >
       <button
-        v-if="showPages < maxPages"
         class="button navigation-button"
         @click="showPages = showPages + 1"
       >
