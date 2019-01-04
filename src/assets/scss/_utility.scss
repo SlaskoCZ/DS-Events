@@ -1,3 +1,5 @@
+$black-shadow: #000 !default;
+
 .align-items-center {
     align-items: center;
 }
@@ -8,4 +10,19 @@
 
 .inline-flex {
     display: inline-flex;
+}
+
+.sticky-bottom {
+    @include breakpoint(medium) {
+        bottom: 0;
+        position: sticky;
+    }
+}
+
+.hover-shadow {
+    &:hover {
+        box-shadow: 0 0 rem-calc(5px) 1px $black-shadow;
+        position: relative;
+        z-index: 999;
+    }
 }

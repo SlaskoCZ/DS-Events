@@ -4,7 +4,7 @@
     :class="{new: message.isNew}"
   >
     <div 
-      class="flex align-items-center"
+      class="flex align-items-center hover-shadow"
       @click="toggleChildren"
     >
       <div

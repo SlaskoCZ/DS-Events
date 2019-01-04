@@ -1,6 +1,6 @@
 <template>
   <div
-    class="event-message flex align-items-center"
+    class="event-message flex align-items-center hover-shadow"
     :class="{new: message.isNew}"
     @click="changeRead"
   >

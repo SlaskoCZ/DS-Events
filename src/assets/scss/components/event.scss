@@ -86,15 +86,16 @@
     overflow-y: auto;
 
     @include breakpoint(medium) {
-        margin: 0 rem-calc(74px) rem-calc(60px) rem-calc(80px);
+        padding: 0 rem-calc(74px) rem-calc(60px) rem-calc(80px);
     }
 
     @include breakpoint(large) {
-        margin: rem-calc(27px) rem-calc(32px) rem-calc(48px) rem-calc(90px);
+        padding: rem-calc(27px) rem-calc(32px) rem-calc(48px) rem-calc(90px);
     }
 }
 
 .navigation-panel {
+    background-color: map-get($map: $event-palette, $key: background);
     display: flex;
 
     .navigation-button {
@@ -111,6 +112,8 @@
 }
 
 .event-container {
+    box-shadow: 0 0 rem-calc(1px) 0 $black-shadow; ;
+
     h4 {
         color: map-get($map: $event-palette, $key: inactive);
         margin: inherit;
@@ -125,11 +128,6 @@
     .event-message {
         background-color: $body-background;
         color: map-get($map: $event-palette, $key: inactive);
-
-        &:hover {
-            box-shadow: 0 0 10px 1px $black-shadow;
-            margin-bottom: 5px;
-        }
 
         &.new {
             @extend %new-colors;
