@@ -3,7 +3,10 @@
     class="event-message group"
     :class="{new: message.isNew}"
   >
-    <div @click="toggleChildren">
+    <div 
+      class="center-childs"
+      @click="toggleChildren"
+    >
       <div
         :src="message.image"
         class="icon group"

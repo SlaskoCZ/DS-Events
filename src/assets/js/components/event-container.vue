@@ -25,20 +25,15 @@
     >
       Hurá, nemáte žádné {{ text }}.
     </div>
-    <button
-      v-if="showPages < maxPages"
-      class="button navigation-button"
-      @click="showPages = showPages + 1"
-    >
-      Načíst další
-    </button>
-    <button
-      v-if="showPages > 1"
-      class="button navigation-button"
-      @click="showPages = showPages - 1"
-    >
-      Zpět
-    </button>
+    <div class="navigation-panel">
+      <button
+        v-if="showPages < maxPages"
+        class="button navigation-button"
+        @click="showPages = showPages + 1"
+      >
+        Načíst další
+      </button>
+    </div>
   </div>
 </template>
 
