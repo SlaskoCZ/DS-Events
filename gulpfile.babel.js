@@ -33,7 +33,7 @@ function loadConfig() {
 // Build the "dist" folder by running all of the below tasks
 // Sass must be run later so UnCSS can search for used classes in the others assets.
 gulp.task('build',
- gulp.series(clean, gulp.parallel(pages, javascript, images, copy), sass, styleGuide));
+ gulp.series(clean, gulp.parallel(pages, javascript, copy, svg), sass, styleGuide));
 
 // Build the site, run the server, and watch for file changes
 gulp.task('default',
@@ -159,20 +159,18 @@ function javascript() {
     .pipe(gulp.dest(PATHS.dist + '/assets/js'));
 }
 
-// Copy images to the "dist" folder
-// In production, the images are compressed
-function images() {
-  return gulp.src('src/assets/img/**/*')
-    .pipe($.if(PRODUCTION, $.imagemin([
-        $.imagemin.jpegtran({ progressive: true }),
-        $.imagemin.svgo({
-            plugins: [
-                { removeViewBox: true },
-                { cleanupIDs: false }
-            ]
-        })
-    ])))
-    .pipe(gulp.dest(PATHS.dist + '/assets/img'));
+function svg() {
+    return gulp.src('src/assets/img/**/*.svg')
+        .pipe($.svgSprite({
+            mode: {
+                css: {
+                    render: {
+                        css: true
+                    }
+                }
+            }
+        }))
+        .pipe(gulp.dest(PATHS.dist + '/assets/'));
 }
 
 // Start a server with BrowserSync to preview the site in
@@ -198,7 +196,7 @@ function watch() {
   gulp.watch('src/assets/scss/**/*.scss').on('all', sass);
   gulp.watch('src/assets/js/**/*.js').on('all', gulp.series(javascript, browser.reload));
   gulp.watch('src/assets/js/**/*.vue').on('all', gulp.series(javascript, browser.reload));
-  gulp.watch('src/assets/img/**/*').on('all', gulp.series(images, browser.reload));
+  gulp.watch('src/assets/img/**/*.svg').on('all', gulp.series(svg, browser.reload));
   gulp.watch('src/styleguide/**').on('all', gulp.series(styleGuide, browser.reload));
   gulp.watch('src/pages/**/*.twig').on('all', gulp.series(pages, browser.reload));
   gulp.watch('src/layouts/**/*.twig').on('all', gulp.series(pages, browser.reload));

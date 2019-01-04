@@ -17,17 +17,23 @@
     background-color: map-get($map: $event-icon-palette, $key: inactive);
     border: 2px solid map-get($map: $event-icon-palette, $key: inactive);
     border-radius: 16px;
-    display: inline-block;
+    display: inline-flex;
     height: 32px;
     margin: rem-calc(16px);
-    vertical-align: top;
     width: 32px;
+
+    svg {
+        background-size: 300% 200%; // rows * 100% ; columns * 100%
+        height: 80%;
+        margin: auto;
+        width: 80%;
+    }
 
     &.small {
         border-radius: 10px;
         height: 20px;
-        width: 20px;
         margin: rem-calc(9px);
+        width: 20px;
     }
 
     &.new {
@@ -62,10 +68,7 @@
         .icon-group-number {
             font-size: rem-calc(16px);
             font-weight: bold;
-            position: relative;
-            text-align: center;
-            top: 50%;
-            transform: translateY(-50%);
+            margin: auto;
         }
     }
 }
@@ -91,6 +94,22 @@
     }
 }
 
+.navigation-panel {
+    display: flex;
+
+    .navigation-button {
+        @extend %new-colors;
+        border: 2px solid map-get($map: $event-palette, $key: primary);
+        color: map-get($map: $event-palette, $key: primary);
+        margin: 0;
+        width: 100%;
+        @include breakpoint(medium) {
+            margin: auto;
+            width: auto;
+        }
+    }
+}
+
 .event-container {
     h4 {
         color: map-get($map: $event-palette, $key: inactive);
@@ -100,17 +119,6 @@
         &.new {
             @extend %new-colors;
             color: map-get($map: $event-palette, $key: primary);
-        }
-    }
-
-    .navigation-button {
-        @extend %new-colors;
-        border: 2px solid map-get($map: $event-palette, $key: primary);
-        color: map-get($map: $event-palette, $key: primary);
-        margin: 0;
-        width: 50%;
-        @include breakpoint(medium) {
-            width: auto;
         }
     }
 
@@ -129,6 +137,8 @@
         }
 
         &.group {
+            display: block;
+
             .event-message {
                 padding-left: rem-calc(60px);
             }
