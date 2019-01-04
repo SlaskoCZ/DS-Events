@@ -49,18 +49,6 @@
         }
     }
 
-    @each $name, $url in $event-icon-types {
-        .#{$name} {
-            background-image: url($url);
-            height: 80%;
-            margin: auto;
-            position: relative;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 80%;
-            }
-        }
-
     &.group {
         background-color: transparent;
         color: map-get($map: $event-icon-palette, $key: inactive);
