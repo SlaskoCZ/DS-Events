@@ -43,3 +43,36 @@ $black-shadow: #000 !default;
         transform: rotate(45deg);
     }
 }
+
+.icon-scale {
+    background-size: 300% 200% !important;  // rows * 100% ; columns * 100%
+    height: 80%;
+    margin: auto;
+    width: 80%;
+}
+
+.group-name {
+    color: map-get($map: $event-palette, $key: inactive);
+    font-size: rem-calc(15px);
+    margin: inherit;
+    padding-left: 1rem;
+
+    &.new {
+        color: map-get($map: $event-palette, $key: primary);
+    }
+}
+
+.read-all {
+    height: 20px;
+    width: 20px;
+}
+
+.circle {
+    display: inline-flex;
+    background-color: black;
+    border-radius: 50%;
+    width: 5px;
+    height: 5px;
+    margin: auto;
+    align-self: center;
+}

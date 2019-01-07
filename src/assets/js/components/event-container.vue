@@ -2,10 +2,19 @@
   <div 
     v-if="view != undefined" 
     class="event-container"
+    :class="{new: isNew}"
   >
-    <h4 :class="textClass">
+    <p 
+      class="group-name"
+      :class="textClass"
+    >
       {{ text }}
-    </h4>
+      <svg 
+        v-if="readAll"
+        class="float-right svg-i_check-double icon-scale read-all"
+        @click="readAllMessages"
+      />
+    </p>
     <template v-for="message in view">
       <EventMessage
         v-if="message.subMessages == undefined || message.subMessages.length <= 1"
@@ -52,7 +61,9 @@ export default {
         text: {type: String, default: '' }, 
         textClass: {type: String, default: '' }, 
         messages: {type: Array, default: undefined }, 
-        pageLimit: {type: Number, default: undefined }},
+        pageLimit: {type: Number, default: undefined },
+        readAll: {type: Boolean, default: false }
+    },
     data(){
         return{
             showPages: 1
@@ -80,6 +91,9 @@ export default {
             
             return pages;
         },
+        isNew: function() {
+            return this.messages.filter(function(x) { return x.isNew == false; }).length == 0;
+        },
         maxPages: function(){
             if (this.messages == undefined)
                 return undefined;
@@ -98,6 +112,20 @@ export default {
             }
 
             return result;
+        }
+
+    },        
+    methods: {
+        readAllMessages() {
+            console.log('ReadAll');
+            this.messages.forEach(element => {
+                element.isNew = false;
+                if (element.subMessages.length > 0) {
+                    element.subMessages.forEach(subElement => {
+                        subElement.isNew = false;
+                    });
+                }
+            });
         }
     }
 };
