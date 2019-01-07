@@ -22,13 +22,6 @@
     margin: rem-calc(16px);
     width: 32px;
 
-    svg {
-        background-size: 300% 200%; // rows * 100% ; columns * 100%
-        height: 80%;
-        margin: auto;
-        width: 80%;
-    }
-
     &.small {
         border-radius: 10px;
         height: 20px;
@@ -97,24 +90,16 @@
 
 .event-container {
     box-shadow: 0 0 rem-calc(1px) 0 $black-shadow;
+    padding: rem-calc(16px);
 
-    h4 {
-        color: map-get($map: $event-palette, $key: inactive);
-        margin: inherit;
-        padding-left: 1rem;
-
-        &.new {
-            @extend %new-colors;
-            color: map-get($map: $event-palette, $key: primary);
-        }
+    &.new {
+        @extend %new-colors;
     }
 
     .event-message {
-        background-color: $body-background;
         color: map-get($map: $event-palette, $key: inactive);
 
         &.new {
-            @extend %new-colors;
             color: map-get($map: $event-palette, $key: active);
         }
 

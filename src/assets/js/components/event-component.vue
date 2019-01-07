@@ -10,6 +10,7 @@
       :text="newText"
       :text-class="newTextClass"
       :messages="unread"
+      :read-all="true"
     />
     <EventContainer
       v-if="isSimple === false"

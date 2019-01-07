@@ -9,7 +9,10 @@
       class="icon"
       :class="[message.type, {new: message.isNew}, {small: useSmallIcon}]" 
     >
-      <svg :class="iconClass" />
+      <svg 
+        class="icon-scale" 
+        :class="iconClass" 
+      />
     </div>
     <div 
       class="info-box"
@@ -21,6 +24,7 @@
       >
         {{ message.subject + " - " + message.name }}
       </div>
+      <EventMessageInfo :message="message" />
       <p class="message">
         {{ message.message }}
       </p>
@@ -29,7 +33,12 @@
 </template>
 
 <script>
+import EventMessageInfo from './event-message-info.vue';
+
 export default {
+    components:{
+        EventMessageInfo
+    },
     props: {
         message: {type: Object, default: undefined },
         showSubject: {type: Boolean, default: true},
@@ -37,7 +46,7 @@ export default {
     },
     computed: {
         iconClass() {
-            return 'svg-i_' + this.message.type + ' svg-i_' + this.message.type + '-dims';
+            return 'svg-i_' + this.message.type;
         }
     },
     methods: {
