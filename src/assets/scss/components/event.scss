@@ -65,11 +65,6 @@
     @extend %new-colors;
 }
 
-.upsidedown {
-    display: inline-block;
-    transform: rotateX(180deg);
-}
-
 .event-component {
     overflow-y: auto;
 
