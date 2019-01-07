@@ -21,12 +21,10 @@
         </div>
         <p class="message">
           {{ groupMessage }} 
-          <span 
+          <i 
             class="arrow" 
-            :class="{upsidedown: showChildren}"
-          >
-            ^
-          </span> 
+            :class="{up: showChildren, down: !showChildren}"
+          />
         </p>
       </div>
     </div>
