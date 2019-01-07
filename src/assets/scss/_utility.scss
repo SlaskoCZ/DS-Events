@@ -31,8 +31,8 @@ $black-shadow: #000 !default;
     border: $black-shadow solid;
     border-width: 0 rem-calc(2px) rem-calc(2px) 0;
     display: inline-block;
-    padding: 3px;
     margin: 2px;
+    padding: 3px;
     vertical-align: middle;
 
     &.up {
