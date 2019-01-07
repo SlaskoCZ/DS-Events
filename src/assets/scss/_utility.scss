@@ -26,3 +26,20 @@ $black-shadow: #000 !default;
         z-index: 999;
     }
 }
+
+.arrow {
+    border: $black-shadow solid;
+    border-width: 0 rem-calc(2px) rem-calc(2px) 0;
+    display: inline-block;
+    padding: 3px;
+    margin: 2px;
+    vertical-align: middle;
+
+    &.up {
+        transform: rotate(-135deg);
+    }
+
+    &.down {
+        transform: rotate(45deg);
+    }
+}
