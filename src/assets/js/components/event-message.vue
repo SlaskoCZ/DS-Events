@@ -1,33 +1,46 @@
 <template>
   <div
-    class="event-message flex align-items-center hover-shadow"
+    class="grid-x"
     :class="{new: message.isNew}"
     @click="changeRead"
   >
-    <div
-      :src="message.image"
-      class="icon"
-      :class="[message.type, {new: message.isNew}, {small: useSmallIcon}]" 
-    >
-      <svg 
-        class="icon-scale" 
-        :class="iconClass" 
-      />
+    <div class="cell shrink">
+      <div
+        :src="message.image"
+        class="icon"
+        :class="[message.type, {new: message.isNew}, {small: useSmallIcon}]" 
+      >
+        <svg 
+          class="icon-scale" 
+          :class="iconClass" 
+        />
+      </div>
     </div>
     <div 
-      class="info-box"
+      class="cell auto"
       :class="{small: useSmallIcon}" 
     >
-      <div 
-        v-if="showSubject"
-        class="subject"
-      >
-        {{ message.subject + " - " + message.name }}
+      <div class="grid-y">
+        <!-- Transform to grid-y on medium up -->
+        <div class="cell shrink">
+          <div class="grid-y"> 
+            <div 
+              v-if="showSubject"
+              class="cell shrink subject"
+            >
+              {{ message.subject + " - " + message.name }}
+            </div>
+            <div class="cell auto">
+              <EventMessageInfo :message="message" />
+            </div>
+          </div>
+        </div>
+        <div class="cell auto">
+          <p class="message">
+            {{ message.message }}
+          </p>
+        </div>
       </div>
-      <EventMessageInfo :message="message" />
-      <p class="message">
-        {{ message.message }}
-      </p>
     </div>
   </div>
 </template>

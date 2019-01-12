@@ -1,47 +1,51 @@
 <template>
   <div
-    class="event-message group"
+    class="grid-x hover-shadow"
     :class="{new: message.isNew}"
   >
-    <div 
-      class="flex align-items-center hover-shadow"
-      @click="toggleChildren"
+    <div
+      :src="message.image"
+      class="cell shrink"
     >
-      <div
-        :src="message.image"
-        class="icon group"
-      >
+      <div class="icon group">
         <div class="icon-group-number">
           {{ message.subMessages.length }}
         </div>
       </div>
-      <div class="info-box">
-        <div class="subject">
-          {{ message.subject + " - " + message.name }}
-        </div>
-        <p class="message">
-          {{ groupMessage }} 
-          <i 
-            class="arrow" 
-            :class="{up: showChildren, down: !showChildren}"
-          />
-        </p>
-      </div>
     </div>
-    <div
-      v-if="showChildren"
-      :key="'d' + message.index"
-      class="childrens"
-    >
-      <template v-for="subMessage in subMessages">
-        <EventMessage
-          :key="subMessage.index"
-          :message="subMessage"
-          :show-subject="false"
-          :use-small-icon="true"
-        />
-      </template>
-    </div>      
+    <div class="cell auto">
+      <div 
+        class="grid-y"
+        @click="toggleChildren"
+      >
+        <div class="info-box">
+          <div class="subject">
+            {{ message.subject + " - " + message.name }}
+          </div>
+          <p class="message">
+            {{ groupMessage }} 
+            <i 
+              class="arrow" 
+              :class="{up: showChildren, down: !showChildren}"
+            />
+          </p>
+        </div>
+        <div
+          v-if="showChildren"
+          :key="'d' + message.index"
+          class="childrens"
+        >
+          <template v-for="subMessage in subMessages">
+            <EventMessage
+              :key="subMessage.index"
+              :message="subMessage"
+              :show-subject="false"
+              :use-small-icon="true"
+            />
+          </template>
+        </div>
+      </div>    
+    </div>
   </div>
 </template>
 

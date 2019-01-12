@@ -1,7 +1,7 @@
 <template>
   <div 
     v-if="view != undefined" 
-    class="event-container"
+    class="cell"
     :class="{new: isNew}"
   >
     <p 
