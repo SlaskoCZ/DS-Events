@@ -21,21 +21,20 @@
       :class="{small: useSmallIcon}" 
     >
       <div class="grid-y">
-        <!-- Transform to grid-y on medium up -->
         <div class="cell shrink">
-          <div class="grid-y"> 
+          <div class="grid-x small-up-1 medium-up-2 grid-margin-x"> 
             <div 
               v-if="showSubject"
-              class="cell shrink subject"
+              class="cell auto-important-medium subject"
             >
               {{ message.subject + " - " + message.name }}
             </div>
-            <div class="cell auto">
+            <div class="cell auto-important-medium">
               <EventMessageInfo :message="message" />
             </div>
           </div>
         </div>
-        <div class="cell auto">
+        <div class="cell">
           <p class="message">
             {{ message.message }}
           </p>

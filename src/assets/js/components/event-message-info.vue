@@ -6,7 +6,10 @@
     <div class="cell shrink">
       <span>•</span> {{ niceDate }}
     </div>
-    <div class="cell auto show-for-small-only">
+    <div 
+      v-if="message.isNew == true"
+      class="cell auto show-for-small-only"
+    >
       <svg class="icon-scale svg-i_check read-all float-right" />
     </div>
   </div>

@@ -76,3 +76,14 @@ $black-shadow: #000 !default;
     margin: auto;
     align-self: center;
 }
+
+.auto-important {
+    width: auto !important;
+    @each $name in $breakpoint-classes {
+        &-#{$name} {
+            @include breakpoint($name) {
+                width: auto !important;
+            }
+        }
+    }
+}
