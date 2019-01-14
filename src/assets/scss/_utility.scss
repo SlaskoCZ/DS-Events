@@ -19,11 +19,17 @@ $black-shadow: #000 !default;
     }
 }
 
-.hover-shadow {
-    &:hover {
-        box-shadow: 0 0 rem-calc(5px) 1px $black-shadow;
-        position: relative;
-        z-index: 999;
+.shadow {
+    box-shadow: 0 0 rem-calc(5px) 1px $black-shadow;
+    position: relative;
+    z-index: 900;
+
+    &-hover {
+        &:hover {
+            box-shadow: 0 0 rem-calc(5px) 1px $black-shadow;
+            position: relative;
+            z-index: 999;
+        }
     }
 }
 
@@ -53,7 +59,6 @@ $black-shadow: #000 !default;
 
 .group-name {
     color: map-get($map: $event-palette, $key: inactive);
-    font-size: rem-calc(15px);
     margin: inherit;
     padding-left: 1rem;
 
@@ -68,13 +73,8 @@ $black-shadow: #000 !default;
 }
 
 .circle {
-    display: inline-flex;
-    background-color: black;
     border-radius: 50%;
-    width: 5px;
-    height: 5px;
-    margin: auto;
-    align-self: center;
+    display: inline;
 }
 
 .auto-important {
@@ -83,6 +83,64 @@ $black-shadow: #000 !default;
         &-#{$name} {
             @include breakpoint($name) {
                 width: auto !important;
+            }
+        }
+    }
+}
+
+.color-gray {
+    color: #919191;
+}
+
+.text-limit {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    @each $name in $breakpoint-classes {
+        &-#{$name} {
+            @include breakpoint($name) {
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: normal;
+            }
+        }
+    }
+}
+
+.text-limit-disable {
+    overflow: unset;
+    text-overflow: unset;
+    white-space: normal;
+
+    @each $name in $breakpoint-classes {
+        &-#{$name} {
+            @include breakpoint($name) {
+                overflow: unset;
+                text-overflow: unset;
+                white-space: normal;
+            }
+        }
+    }
+}
+
+.width-90 {
+    width: 90%;
+    @each $name in $breakpoint-classes {
+        &-#{$name} {
+            @include breakpoint($name) {
+                width: 90%;
+            }
+        }
+    }
+}
+
+.width-75 {
+    width: 75%;
+    @each $name in $breakpoint-classes {
+        &-#{$name} {
+            @include breakpoint($name) {
+                width: 75%;
             }
         }
     }

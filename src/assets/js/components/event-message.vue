@@ -1,6 +1,6 @@
 <template>
   <div
-    class="grid-x"
+    class="grid-x shadow-hover"
     :class="{new: message.isNew}"
     @click="changeRead"
   >
@@ -22,12 +22,12 @@
     >
       <div class="grid-y">
         <div class="cell shrink">
-          <div class="grid-x small-up-1 medium-up-2 grid-margin-x"> 
+          <div class="grid-x small-up-1 medium-up-2 grid-margin-x h2-small-small"> 
             <div 
               v-if="showSubject"
               class="cell auto-important-medium subject"
             >
-              {{ message.subject + " - " + message.name }}
+              <strong> {{ message.subject }}</strong>
             </div>
             <div class="cell auto-important-medium">
               <EventMessageInfo :message="message" />
@@ -35,7 +35,7 @@
           </div>
         </div>
         <div class="cell">
-          <p class="message">
+          <p class="message text-small-small text-limit text-limit-disable-large width-90 width-75-large">
             {{ message.message }}
           </p>
         </div>

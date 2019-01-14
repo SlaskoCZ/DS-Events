@@ -1,7 +1,7 @@
 <template>
   <div
-    class="grid-x hover-shadow"
-    :class="{new: message.isNew}"
+    class="grid-x shadow-hover"
+    :class="{new: message.isNew, shadow: showChildren}"
   >
     <div
       :src="message.image"
@@ -18,11 +18,11 @@
         class="grid-y"
         @click="toggleChildren"
       >
-        <div class="info-box">
-          <div class="subject">
-            {{ message.subject + " - " + message.name }}
+        <div class="info-box h2-small-small">
+          <div class="subject bold">
+            <strong> {{ message.subject }} </strong>
           </div>
-          <p class="message">
+          <p class="message text-small-small">
             {{ groupMessage }} 
             <i 
               class="arrow" 

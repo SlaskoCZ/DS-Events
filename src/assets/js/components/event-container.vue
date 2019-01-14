@@ -5,7 +5,7 @@
     :class="{new: isNew}"
   >
     <p 
-      class="group-name"
+      class="group-name h1-small-small h1-small-medium"
       :class="textClass"
     >
       {{ text }}
@@ -117,7 +117,6 @@ export default {
     },        
     methods: {
         readAllMessages() {
-            console.log('ReadAll');
             this.messages.forEach(element => {
                 element.isNew = false;
                 if (element.subMessages.length > 0) {

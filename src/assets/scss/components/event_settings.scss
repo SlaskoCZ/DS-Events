@@ -13,3 +13,36 @@ $event-palette: (
 ) !default;
 
 $black-shadow: rgba(0, 0, 0, .5) !default;
+
+$event-fonts: (
+    small: (
+        'h1': (
+            small: (
+                font-size: 15
+            ),
+            medium: (
+                font-size: 23
+            )
+        ),
+        'h2': (
+            small: (
+                font-size: 14
+            )
+        ),
+        'text': (
+            small: (
+                font-size: 16
+            )
+        )
+    ),
+    medium: (
+        'h1': (
+            small: (
+                font-size: 48
+            ),
+            medium: (
+                font-size: 56
+            )
+        )
+    )
+)

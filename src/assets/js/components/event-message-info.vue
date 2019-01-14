@@ -1,5 +1,5 @@
 <template>
-  <div class="grid-x grid-margin-x">
+  <div class="grid-x grid-margin-x color-gray">
     <div class="cell shrink">
       <span>•</span> {{ message.name }}
     </div>
