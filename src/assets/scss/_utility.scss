@@ -1,4 +1,5 @@
 $black-shadow: #000 !default;
+$light-black-shadow: rgba(0, 0, 0, .1) !default;
 
 .align-items-center {
     align-items: center;
@@ -23,6 +24,10 @@ $black-shadow: #000 !default;
     box-shadow: 0 0 rem-calc(5px) 1px $black-shadow;
     position: relative;
     z-index: 900;
+
+    &-light {
+        box-shadow: 0 0 rem-calc(5px) 1px $light-black-shadow;
+    }
 
     &-hover {
         &:hover {
