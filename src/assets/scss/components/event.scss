@@ -27,13 +27,13 @@
     border-radius: 16px;
     display: inline-flex;
     height: 32px;
-    margin: rem-calc(16px);
+    margin-right: rem-calc(16px);
     width: 32px;
 
     &.small {
         border-radius: 10px;
         height: 20px;
-        margin: rem-calc(9px);
+        margin-right: rem-calc(9px);
         width: 20px;
     }
 

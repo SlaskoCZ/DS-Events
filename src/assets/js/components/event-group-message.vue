@@ -22,7 +22,7 @@
           <div class="subject bold">
             <strong> {{ message.subject }} </strong>
           </div>
-          <p class="message text-small-small">
+          <p class="message text-small-small margin-0">
             {{ groupMessage }} 
             <i 
               class="arrow" 
@@ -41,6 +41,7 @@
               :message="subMessage"
               :show-subject="false"
               :use-small-icon="true"
+              class="padding-top-18 padding-bottom-4"
             />
           </template>
         </div>

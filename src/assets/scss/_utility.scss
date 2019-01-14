@@ -64,7 +64,6 @@ $light-black-shadow: rgba(0, 0, 0, .1) !default;
 
 .group-name {
     color: map-get($map: $event-palette, $key: inactive);
-    margin: inherit;
     padding-left: 1rem;
 
     &.new {
@@ -149,4 +148,48 @@ $light-black-shadow: rgba(0, 0, 0, .1) !default;
             }
         }
     }
+}
+.padding-first-top {
+    &> :first-child {
+        padding-top: 14px !important;
+
+        @include breakpoint(medium) {
+            padding-top: 20px !important;
+        }
+        @include breakpoint(large) {
+            padding-top: 32px !important;
+        }
+    }
+}
+
+.padding-last-bottom {
+    &> :last-child { 
+        padding-bottom: 24px !important;
+    }
+}
+
+.padding-bottom-4 {
+    padding-bottom: 4px;
+}
+
+.padding-top-24 {
+    padding-top: 24px;
+}
+
+.padding-top-18 {
+    padding-top: 18px;
+}
+
+.padding-left-16 {
+    padding-left: 16px;
+}
+
+.padding-left-26-medium {
+    @include breakpoint(medium) {
+        padding-left: 26px !important;
+    }
+}
+
+.margin-0 {
+    margin: 0 !important;
 }

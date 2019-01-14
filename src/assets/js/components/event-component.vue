@@ -1,5 +1,5 @@
 <template>
-  <div class="grid-y grid-padding-x grid-padding-y shadow shadow-light">
+  <div class="grid-y shadow shadow-light">
     <EventContainer
       v-if="isSimple === true"
       :messages="messages"

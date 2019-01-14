@@ -35,7 +35,7 @@
           </div>
         </div>
         <div class="cell">
-          <p class="message text-small-small text-limit text-limit-disable-large width-90 width-75-large">
+          <p class="message text-small-small text-limit text-limit-disable-large width-90 width-75-large margin-0">
             {{ message.message }}
           </p>
         </div>

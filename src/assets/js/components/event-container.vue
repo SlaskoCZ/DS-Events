@@ -5,34 +5,39 @@
     :class="{new: isNew}"
   >
     <p 
-      class="group-name h1-small-small h1-small-medium"
+      v-if="text != ''"
+      class="group-name h1-small-small h1-small-medium padding-top-24 margin-0"
       :class="textClass"
     >
-      {{ text }}
+      <strong>{{ text }}</strong> 
       <svg 
         v-if="readAll"
         class="float-right svg-i_check-double icon-scale read-all"
         @click="readAllMessages"
       />
     </p>
-    <template v-for="message in view">
-      <EventMessage
-        v-if="message.subMessages == undefined || message.subMessages.length <= 1"
-        :key="message.index"
-        :message="message"
-      />
-      <EventGroupMessage
-        v-if="message.subMessages != undefined && message.subMessages.length > 1"
-        :key="message.index"
-        :message="message"
-      />
-    </template>
-    <div 
-      v-if="view.length == 0"
-      class="text-center"
-      :class="textClass"
-    >
-      Hurá, nemáte žádné {{ text }}.
+    <div class="padding-first-top padding-last-bottom">
+      <template v-for="message in view">
+        <EventMessage
+          v-if="message.subMessages == undefined || message.subMessages.length <= 1"
+          :key="message.index"
+          :message="message"
+          class="padding-left-16 padding-left-26-medium padding-top-18 padding-bottom-4"
+        />
+        <EventGroupMessage
+          v-if="message.subMessages != undefined && message.subMessages.length > 1"
+          :key="message.index"
+          :message="message"
+          class="padding-left-16 padding-left-26-medium padding-top-18 padding-bottom-4"
+        />
+      </template>
+      <div 
+        v-if="view.length == 0"
+        class="text-center"
+        :class="textClass"
+      >
+        Hurá, nemáte žádné {{ text }}.
+      </div>
     </div>
     <div 
       v-if="showPages < maxPages"
