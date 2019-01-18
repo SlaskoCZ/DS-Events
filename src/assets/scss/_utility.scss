@@ -76,11 +76,6 @@ $light-black-shadow: rgba(0, 0, 0, .1) !default;
     width: 20px;
 }
 
-.circle {
-    border-radius: 50%;
-    display: inline;
-}
-
 .auto-important {
     width: auto !important;
     @each $name in $breakpoint-classes {
@@ -149,6 +144,7 @@ $light-black-shadow: rgba(0, 0, 0, .1) !default;
         }
     }
 }
+
 .padding-first-top {
     &> :first-child {
         padding-top: 14px !important;
@@ -163,7 +159,7 @@ $light-black-shadow: rgba(0, 0, 0, .1) !default;
 }
 
 .padding-last-bottom {
-    &> :last-child { 
+    &> :last-child {
         padding-bottom: 24px !important;
     }
 }
@@ -182,6 +178,10 @@ $light-black-shadow: rgba(0, 0, 0, .1) !default;
 
 .padding-left-16 {
     padding-left: 16px;
+}
+
+.padding-right-16 {
+    padding-right: 16px;
 }
 
 .padding-left-26-medium {

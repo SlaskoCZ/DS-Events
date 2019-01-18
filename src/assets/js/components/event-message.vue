@@ -62,7 +62,8 @@ export default {
         }
     },
     methods: {
-        changeRead: function(){
+        changeRead: function(e){
+            e.stopPropagation();
             this.message.isNew = !this.message.isNew;
         }
     }
