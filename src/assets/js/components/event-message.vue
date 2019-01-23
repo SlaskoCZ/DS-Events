@@ -1,33 +1,45 @@
 <template>
   <div
-    class="event-message flex align-items-center hover-shadow"
+    class="grid-x shadow-hover"
     :class="{new: message.isNew}"
     @click="changeRead"
   >
-    <div
-      :src="message.image"
-      class="icon"
-      :class="[message.type, {new: message.isNew}, {small: useSmallIcon}]" 
-    >
-      <svg 
-        class="icon-scale" 
-        :class="iconClass" 
-      />
+    <div class="cell shrink">
+      <div
+        :src="message.image"
+        class="icon"
+        :class="[message.type, {new: message.isNew}, {small: useSmallIcon}]" 
+      >
+        <svg 
+          class="icon-scale" 
+          :class="iconClass" 
+        />
+      </div>
     </div>
     <div 
-      class="info-box"
+      class="cell auto"
       :class="{small: useSmallIcon}" 
     >
-      <div 
-        v-if="showSubject"
-        class="subject"
-      >
-        {{ message.subject + " - " + message.name }}
+      <div class="grid-y">
+        <div class="cell shrink">
+          <div class="grid-x small-up-1 medium-up-2 grid-margin-x h2-small-small"> 
+            <div 
+              v-if="showSubject"
+              class="cell auto-important-medium subject"
+            >
+              <strong> {{ message.subject }}</strong>
+            </div>
+            <div class="cell auto-important-medium">
+              <EventMessageInfo :message="message" />
+            </div>
+          </div>
+        </div>
+        <div class="cell">
+          <p class="message text-small-small text-limit text-limit-disable-large width-90 width-75-large margin-0">
+            {{ message.message }}
+          </p>
+        </div>
       </div>
-      <EventMessageInfo :message="message" />
-      <p class="message">
-        {{ message.message }}
-      </p>
     </div>
   </div>
 </template>
@@ -50,7 +62,8 @@ export default {
         }
     },
     methods: {
-        changeRead: function(){
+        changeRead: function(e){
+            e.stopPropagation();
             this.message.isNew = !this.message.isNew;
         }
     }

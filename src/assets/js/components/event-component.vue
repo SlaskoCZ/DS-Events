@@ -1,5 +1,5 @@
 <template>
-  <div class="event-component">
+  <div class="grid-y shadow shadow-light">
     <EventContainer
       v-if="isSimple === true"
       :messages="messages"

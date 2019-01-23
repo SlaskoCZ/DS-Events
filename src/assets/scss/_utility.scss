@@ -1,4 +1,5 @@
 $black-shadow: #000 !default;
+$light-black-shadow: rgba(0, 0, 0, .1) !default;
 
 .align-items-center {
     align-items: center;
@@ -19,11 +20,21 @@ $black-shadow: #000 !default;
     }
 }
 
-.hover-shadow {
-    &:hover {
-        box-shadow: 0 0 rem-calc(5px) 1px $black-shadow;
-        position: relative;
-        z-index: 999;
+.shadow {
+    box-shadow: 0 0 rem-calc(5px) 1px $black-shadow;
+    position: relative;
+    z-index: 900;
+
+    &-light {
+        box-shadow: 0 0 rem-calc(5px) 1px $light-black-shadow;
+    }
+
+    &-hover {
+        &:hover {
+            box-shadow: 0 0 rem-calc(5px) 1px $black-shadow;
+            position: relative;
+            z-index: 999;
+        }
     }
 }
 
@@ -53,8 +64,6 @@ $black-shadow: #000 !default;
 
 .group-name {
     color: map-get($map: $event-palette, $key: inactive);
-    font-size: rem-calc(15px);
-    margin: inherit;
     padding-left: 1rem;
 
     &.new {
@@ -67,12 +76,120 @@ $black-shadow: #000 !default;
     width: 20px;
 }
 
-.circle {
-    display: inline-flex;
-    background-color: black;
-    border-radius: 50%;
-    width: 5px;
-    height: 5px;
-    margin: auto;
-    align-self: center;
+.auto-important {
+    width: auto !important;
+    @each $name in $breakpoint-classes {
+        &-#{$name} {
+            @include breakpoint($name) {
+                width: auto !important;
+            }
+        }
+    }
+}
+
+.color-gray {
+    color: #919191;
+}
+
+.text-limit {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    @each $name in $breakpoint-classes {
+        &-#{$name} {
+            @include breakpoint($name) {
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: normal;
+            }
+        }
+    }
+}
+
+.text-limit-disable {
+    overflow: unset;
+    text-overflow: unset;
+    white-space: normal;
+
+    @each $name in $breakpoint-classes {
+        &-#{$name} {
+            @include breakpoint($name) {
+                overflow: unset;
+                text-overflow: unset;
+                white-space: normal;
+            }
+        }
+    }
+}
+
+.width-90 {
+    width: 90%;
+    @each $name in $breakpoint-classes {
+        &-#{$name} {
+            @include breakpoint($name) {
+                width: 90%;
+            }
+        }
+    }
+}
+
+.width-75 {
+    width: 75%;
+    @each $name in $breakpoint-classes {
+        &-#{$name} {
+            @include breakpoint($name) {
+                width: 75%;
+            }
+        }
+    }
+}
+
+.padding-first-top {
+    &> :first-child {
+        padding-top: 14px !important;
+
+        @include breakpoint(medium) {
+            padding-top: 20px !important;
+        }
+        @include breakpoint(large) {
+            padding-top: 32px !important;
+        }
+    }
+}
+
+.padding-last-bottom {
+    &> :last-child {
+        padding-bottom: 24px !important;
+    }
+}
+
+.padding-bottom-4 {
+    padding-bottom: 4px;
+}
+
+.padding-top-24 {
+    padding-top: 24px;
+}
+
+.padding-top-18 {
+    padding-top: 18px;
+}
+
+.padding-left-16 {
+    padding-left: 16px;
+}
+
+.padding-right-16 {
+    padding-right: 16px;
+}
+
+.padding-left-26-medium {
+    @include breakpoint(medium) {
+        padding-left: 26px !important;
+    }
+}
+
+.margin-0 {
+    margin: 0 !important;
 }

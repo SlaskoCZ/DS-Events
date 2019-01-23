@@ -5,12 +5,16 @@
     background-color: map-get($map: $event-palette, $key: background);
 }
 
-.footer {
-    text-align: center;
-}
-
 .content {
-    white-space: nowrap;
+    margin: 0;
+
+    @include breakpoint(medium) {
+        margin: 0 80px;
+    }
+
+    @include breakpoint(large) {
+        margin: 27px 32px 48px 90px;
+    }
 }
 
 .icon {
@@ -19,13 +23,13 @@
     border-radius: 16px;
     display: inline-flex;
     height: 32px;
-    margin: rem-calc(16px);
+    margin-right: rem-calc(16px);
     width: 32px;
 
     &.small {
         border-radius: 10px;
         height: 20px;
-        margin: rem-calc(9px);
+        margin-right: rem-calc(9px);
         width: 20px;
     }
 
@@ -58,18 +62,6 @@
     @extend %new-colors;
 }
 
-.event-component {
-    overflow-y: auto;
-
-    @include breakpoint(medium) {
-        margin: 0 rem-calc(74px) rem-calc(60px) rem-calc(80px);
-    }
-
-    @include breakpoint(large) {
-        margin: rem-calc(27px) rem-calc(32px) rem-calc(48px) rem-calc(90px);
-    }
-}
-
 .navigation-panel {
     background-color: map-get($map: $event-palette, $key: background);
     display: flex;
@@ -88,58 +80,15 @@
     }
 }
 
-.event-container {
-    box-shadow: 0 0 rem-calc(1px) 0 $black-shadow;
-    padding: rem-calc(16px);
-
-    &.new {
-        @extend %new-colors;
-    }
-
-    .event-message {
-        color: map-get($map: $event-palette, $key: inactive);
-
-        &.new {
-            color: map-get($map: $event-palette, $key: active);
-        }
-
-        &.group {
-            display: block;
-
-            .event-message {
-                padding-left: rem-calc(60px);
-            }
-        }
-
-        .info-box {
-            display: inline-block;
-            padding: rem-calc(16px);
-            padding-left: 0;
-
-            &.small {
-                padding: rem-calc(9px);
-                padding-left: 0;
-            }
-
-            .message {
-                border: 1px;
-                margin: inherit;
-                max-width: rem-calc(400px);
-                overflow: hidden;
-                text-overflow: ellipsis;
-                width: auto;
-
-                @include breakpoint(medium) {
-                    max-width: rem-calc(450px);
+@each $category, $childs in $event-fonts {
+    @each $size, $sub-childs in $childs {
+        .#{$size}-#{$category} {
+            @each $size, $data in $sub-childs {
+                @include breakpoint(#{$size}) {
+                    &-#{$size} {
+                        font-size: rem-calc(map-get($map: $data, $key: font-size));
+                    }
                 }
-
-                @include breakpoint(large) {
-                    max-width: rem-calc(750px);
-                }
-            }
-
-            .subject {
-                font-weight: bold;
             }
         }
     }

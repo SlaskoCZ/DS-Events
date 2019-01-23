@@ -46,23 +46,3 @@ function getDataAsync(filter) {
         }, 1000);
     });
 }
-
-function setMaxHeight() {
-    var content = $('.event-component');
-    var topBar = $('.top-bar');
-
-    var maxHeight = $(window).height() - removePx(content.css('margin-top')) - removePx(content.css('margin-bottom')) - removePx(topBar.css('height')) - removePx(content.css('padding-top')) - removePx(content.css('padding-bottom'));
-    content.css('max-height', maxHeight + 'px');
-}
-
-function removePx(number) {
-    return number.replace('px', '');
-}
-
-$(function () {
-    setMaxHeight();
-
-    $(window).resize(function () {
-        setMaxHeight();
-    });
-});
