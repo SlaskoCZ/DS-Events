@@ -149,20 +149,20 @@ $light-black-shadow: rgba(0, 0, 0, .1) !default;
 
 .padding-first-top {
     &> :first-child {
-        padding-top: 14px !important;
+        padding-top: 14px;
 
         @include breakpoint(medium) {
-            padding-top: 20px !important;
+            padding-top: 20px;
         }
         @include breakpoint(large) {
-            padding-top: 32px !important;
+            padding-top: 32px;
         }
     }
 }
 
 .padding-last-bottom {
     &> :last-child {
-        padding-bottom: 24px !important;
+        padding-bottom: 24px;
     }
 }
 
@@ -188,10 +188,10 @@ $light-black-shadow: rgba(0, 0, 0, .1) !default;
 
 .padding-left-26-medium {
     @include breakpoint(medium) {
-        padding-left: 26px !important;
+        padding-left: 26px;
     }
 }
 
 .margin-0 {
-    margin: 0 !important;
+    margin: 0;
 }
