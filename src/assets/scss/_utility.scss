@@ -57,6 +57,11 @@ $light-black-shadow: rgba(0, 0, 0, .1) !default;
     }
 }
 
+.max-height-by-available-space {
+    overflow: hidden;
+    overflow-y: auto;
+}
+
 .icon-scale {
     background-size: 300% 200% !important;  // rows * 100% ; columns * 100%
     height: 80%;
@@ -91,6 +96,10 @@ $light-black-shadow: rgba(0, 0, 0, .1) !default;
 
 .color-gray {
     color: #919191;
+}
+
+.color-dark-gray {
+    color: #404040;
 }
 
 .text-limit {
