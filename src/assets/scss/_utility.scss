@@ -21,12 +21,14 @@ $light-black-shadow: rgba(0, 0, 0, .1) !default;
 }
 
 .shadow {
-    box-shadow: 0 0 rem-calc(5px) 1px $black-shadow;
+    box-shadow: 0 0 rem-calc(10px) 1px $black-shadow;
     position: relative;
     z-index: 900;
 
     &-light {
-        box-shadow: 0 0 rem-calc(5px) 1px $light-black-shadow;
+        box-shadow: 0 0 rem-calc(10px) 1px $light-black-shadow;
+        position: relative;
+        z-index: 900;
     }
 
     &-hover {
@@ -63,7 +65,7 @@ $light-black-shadow: rgba(0, 0, 0, .1) !default;
 }
 
 .group-name {
-    color: map-get($map: $event-palette, $key: inactive);
+    color: map-get($map: $event-palette, $key: active);
     padding-left: 1rem;
 
     &.new {

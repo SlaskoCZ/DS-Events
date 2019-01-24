@@ -1,7 +1,7 @@
 <template>
   <div
-    class="grid-x shadow-hover"
-    :class="{new: message.isNew, shadow: showChildren}"
+    class="grid-x"
+    :class="{new: message.isNew, 'shadow-light': showChildren}"
   >
     <div
       :src="message.image"
