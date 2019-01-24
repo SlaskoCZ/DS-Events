@@ -1,29 +1,31 @@
 <template>
-  <div class="grid-y shadow shadow-light">
-    <EventContainer
-      v-if="isSimple === true"
-      :messages="messages"
-      :page-limit="itemsShown"
-    />
-    <EventContainer
-      v-if="isSimple === false"
-      :text="newText"
-      :text-class="newTextClass"
-      :messages="unread"
-      :read-all="true"
-    />
-    <EventContainer
-      v-if="isSimple === false"
-      :text="readText"
-      :text-class="readTextClass"
-      :messages="read"
-    />
-    <p
-      v-if="isLoaded === false"
-      class="text-center"
-    >
-      Loading, please wait
-    </p>
+  <div class="grid-y shadow shadow-light max-height-by-available-space">
+    <div class="content">
+      <EventContainer
+        v-if="isSimple === true"
+        :messages="messages"
+        :page-limit="itemsShown"
+      />
+      <EventContainer
+        v-if="isSimple === false"
+        :text="newText"
+        :text-class="newTextClass"
+        :messages="unread"
+        :read-all="true"
+      />
+      <EventContainer
+        v-if="isSimple === false"
+        :text="readText"
+        :text-class="readTextClass"
+        :messages="read"
+      />
+      <p
+        v-if="isLoaded === false"
+        class="text-center"
+      >
+        Loading, please wait
+      </p>
+    </div>
   </div>
 </template>
 

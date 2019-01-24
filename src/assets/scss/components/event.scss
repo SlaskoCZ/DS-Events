@@ -87,6 +87,7 @@
                 @include breakpoint(#{$size}) {
                     &-#{$size} {
                         font-size: rem-calc(map-get($map: $data, $key: font-size));
+                        line-height: map-get($map: $data, $key: line-height)
                     }
                 }
             }

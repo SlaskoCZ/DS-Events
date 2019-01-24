@@ -1,6 +1,6 @@
 <template>
   <div
-    class="grid-x shadow-hover"
+    class="grid-x"
     :class="{new: message.isNew}"
     @click="changeRead"
   >

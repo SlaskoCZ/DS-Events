@@ -1,7 +1,7 @@
 {% extends "../layouts/default.twig" %}
 
 {% block page %}
-<div class="content" id="eventContent">
+<div id="eventContent">
     <event-component :is-simple="false" :items-shown="5" :get-messages="getData"></event-component>
 </div>
 {% endblock %}
